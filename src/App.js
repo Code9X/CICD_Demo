@@ -2,7 +2,7 @@
 function App() {
   return (
     <div>
-      <h1>Version 1</h1>
+      <h1>Version 2</h1>
     </div>
   );
 }
