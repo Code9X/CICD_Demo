@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/CICD_Demo/static/js/main.0dadf116.js",
+    "index.html": "/CICD_Demo/index.html",
+    "main.0dadf116.js.map": "/CICD_Demo/static/js/main.0dadf116.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.0dadf116.js"
+  ]
+}
