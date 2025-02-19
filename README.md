@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+Step 1: Developer Pushes Code to GitHub (Dev Branch)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A developer writes new code (fix, feature, update).
+They commit and push it to the Dev branch (git push origin dev).
 
-## Available Scripts
+Step 2: Open a Pull Request (PR) to Merge Dev → Main
 
-In the project directory, you can run:
+The developer creates a Pull Request (PR) to merge changes into the Main branch.
+Other developers review the PR, run tests, and approve it.
+If everything is fine, the PR is merged into Main.
 
-### `npm start`
+Step 3: GitHub Actions Triggers CI Pipeline
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ What happens automatically?
+GitHub Actions is triggered when code is merged into Main.
+It runs tests to check if the code is working.
+It builds the React app and .NET backend.
+It pushes the build artifacts to GitHub for further use.
+It triggers Jenkins for further steps.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Step 4: Jenkins Builds, Dockerizes, and Deploys
 
-### `npm test`
+✅ What happens in Jenkins?
+Jenkins pulls the latest code from the Main branch.
+It creates Docker images for the frontend and backend.
+It pushes these images to Azure Container Registry (ACR).
+It deploys these images to Azure Kubernetes Service (AKS).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Step 5: Terraform Manages Infrastructure
 
-### `npm run build`
+✅ What Terraform does:
+Ensures all cloud infrastructure is in place (Databases, Storage, etc.).
+If any new infrastructure is needed (e.g., a new database), it creates or updates it automatically.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Step 6: AKS Hosts the Application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+✅ Kubernetes (AKS) does the following:
+Pulls the latest Docker images from Azure Container Registry.
+Creates Pods & Deployments to run the frontend and backend.
+Ensures the application is running and scales it if needed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Step 7: Application is Live! 🎉
 
-### `npm run eject`
+The new version is now deployed to Production and available to users.
+If there are errors, monitoring tools detect them and send alerts.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
